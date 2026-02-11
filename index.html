@@ -238,6 +238,31 @@
           justify-content: center;
         }
       }
+      .site-footer {
+        background-color: #1a1a1a;
+        /* Path to your image */
+        background-image: url("assets/img/footer-bg.svg.png");
+        background-repeat: no-repeat;
+        background-position: bottom left;
+
+        /* Use a percentage or px value to control the size */
+        background-size: 40%;
+
+        /* Ensure the background doesn't bleed into other sections */
+        background-attachment: local;
+
+        color: #ffffff;
+        padding: 80px 0 30px 0;
+        position: relative;
+      }
+
+      /* Responsive fix: Hide or shrink image on small mobile screens */
+      @media (max-width: 768px) {
+        .site-footer {
+          background-size: 50%; /* Larger percentage for smaller screens */
+          background-image: none; /* Or hide it if it makes text unreadable */
+        }
+      }
     </style>
   </head>
   <body>
@@ -337,31 +362,45 @@
         </div>
       </div>
     </section>
-    <section class="modular-container-section">
-      <div class="container">
-        <div class="content-wrapper">
-          <div class="image-column">
-            <div class="image-main-wrapper">
-              <img
-                src="assets/img/Frame 6803.png"
-                alt="Modular Construction"
-                class="main-visual"
-              />
-
-              <div class="image-inset">
-                <img src="assets/img/Frame 6803.png" alt="Camp Installation" />
-              </div>
-            </div>
+    <section>
+      <div class="container-fluid">
+        <div class="row g-0 align-items-center">
+          <div class="col-lg-6">
+            <img
+              src="assets/img/Screenshot 2026-02-11 at 4.19.42 PM.png"
+              style="height: auto; width: 80%; margin-left: 100px"
+              alt="Koyee Container Presentation"
+            />
           </div>
+          <div class="col-lg-6 pe-5 pt-5 pb-5">
+            <div class="container">
+              <div class="d-flex align-items-center mb-2">
+                <img
+                  src="assets/img/icon-sub-heading.svg fill.png"
+                  alt="icon"
+                  style="width: 20px; height: auto; margin-right: 10px"
+                />
+                <span
+                  style="
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    color: #d35400;
+                    font-weight: 600;
+                  "
+                  >We Are</span
+                >
+              </div>
 
-          <div class="text-column ms-5">
-            <span class="sub-heading">WE ARE</span>
-            <h2 class="main-heading">
-              Modular Container Home <br />
-              Manufacturer & Installer
-            </h2>
+              <h2
+                style="
+                  font-weight: 700;
+                  font-size: 2.5rem;
+                  margin-bottom: 1.5rem;
+                "
+              >
+                Modular Container Home Manufacturer & Installer
+              </h2>
 
-            <div class="description">
               <p>
                 <strong>Koyee Container Workshop</strong> has built a strong
                 reputation through its successful delivery of high-quality camp
@@ -385,35 +424,71 @@
                 >
               </p>
 
-              <p class="highlight-text">
+              <p style="color: #d35400; font-weight: 600">
                 With a reputation built on quality, speed, and reliability,
                 KOYEE is your trusted partner for modular infrastructure across
                 the Middle East Region.
               </p>
+
+              <div class="row mt-4">
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li class="pb-2 pt-2">
+                      <img src="assets/img/SVG.png" alt="icon" />
+                      Accommodation Camps
+                    </li>
+                    <li class="pb-2 pt-2">
+                      <img src="assets/img/SVG.png" alt="icon" />
+                      Office Buildings
+                    </li>
+                    <li class="pb-2 pt-2">
+                      <img src="assets/img/SVG.png" alt="icon" />
+                      Emergency Disaster Camps
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li class="pb-2 pt-2">
+                      <img src="assets/img/SVG.png" alt="icon" />
+                      Warehouses
+                    </li>
+                    <li class="pb-2 pt-2">
+                      <img src="assets/img/SVG.png" alt="icon" />
+                      Amenities Buildings
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12">
+                  <ul class="list-unstyled">
+                    <li class="pb-2 pt-2">
+                      <img src="assets/img/SVG.png" alt="icon" />
+                      Solar Powered Mobile Offices and Toilet Blocks
+                    </li>
+                    <li class="pb-2 pt-2">
+                      <img src="assets/img/SVG.png" alt="icon" />
+                      Foldable Container Accommodation and Offices (plug n play)
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <a
+                href="#"
+                class="btn mt-3"
+                style="
+                  background-color: #e67e22;
+                  color: white;
+                  border-radius: 25px;
+                  padding: 10px 30px;
+                "
+                >Learn More</a
+              >
             </div>
-
-            <ul class="features-list">
-              <li><i class="icon-gear"></i> Accommodation Camps</li>
-              <li><i class="icon-gear"></i> Warehouses</li>
-              <li><i class="icon-gear"></i> Office Buildings</li>
-              <li><i class="icon-gear"></i> Amenities Buildings</li>
-              <li><i class="icon-gear"></i> Emergency Disaster Camps</li>
-              <li>
-                <i class="icon-gear"></i> Solar Powered Mobile Offices and
-                Toilet Blocks
-              </li>
-              <li>
-                <i class="icon-gear"></i> Foldable Container Accommodation and
-                Offices (plug n play)
-              </li>
-            </ul>
-
-            <a href="#" class="btn-learn-more">Learn More</a>
           </div>
         </div>
       </div>
     </section>
-
     <footer class="site-footer">
       <div class="footer-container">
         <!-- Left: Logo & Social -->
