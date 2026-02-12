@@ -18,6 +18,1095 @@
     />
 
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Manrope", sans-serif;
+        background: white;
+        color: #222222;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      .animate-marquee {
+        animation: marquee 30s linear infinite;
+      }
+
+      /* Header */
+      header {
+        background: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 15px 13px;
+      }
+
+      .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        width: 219px;
+        height: 74px;
+        border-radius: 6px;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 0;
+      }
+
+      nav a {
+        padding: 13px 20px;
+        font-size: 20px;
+        font-weight: 600;
+        color: black;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: color 0.3s;
+      }
+
+      nav a:hover,
+      nav a.active {
+        color: #df613e;
+      }
+
+      .contact-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .contact-item img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .contact-item span {
+        font-size: 20px;
+        font-weight: 600;
+        color: black;
+        white-space: nowrap;
+      }
+
+      /* Hero Carousel */
+      .carousel {
+        position: relative;
+        width: 100%;
+        height: 826px;
+        overflow: hidden;
+      }
+
+      .carousel-slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .carousel-slide.active {
+        opacity: 1;
+      }
+
+      .carousel-content {
+        max-width: 716px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        color: white;
+      }
+
+      .carousel-content h2 {
+        font-size: 70px;
+        line-height: 84px;
+        letter-spacing: -0.7px;
+        text-align: center;
+        margin-bottom: 33px;
+      }
+
+      .carousel-content p {
+        font-size: 20px;
+        line-height: 27.2px;
+        text-align: justify;
+      }
+
+      .carousel-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .carousel-label img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .carousel-label span {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2.8px;
+      }
+
+      .carousel-controls {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+      }
+
+      .carousel-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .carousel-dot.active {
+        background: white;
+      }
+
+      /* About Section */
+      .about-section {
+        padding: 110px 220px;
+        position: relative;
+      }
+
+      .about-container {
+        display: flex;
+        align-items: center;
+        gap: 80px;
+        max-width: 1723px;
+        margin: 0 auto;
+      }
+
+      .about-images {
+        position: relative;
+        width: 622px;
+        height: 645px;
+        flex-shrink: 0;
+      }
+
+      .about-images img:first-child {
+        position: absolute;
+        top: 1px;
+        left: 46px;
+        width: 576px;
+        height: 481px;
+        border-radius: 15px;
+      }
+
+      .about-images img:last-child {
+        position: absolute;
+        top: 362px;
+        left: 0;
+        width: 355px;
+        height: 267px;
+        border-radius: 15px;
+        border: 10px solid white;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-content {
+        flex: 1;
+        max-width: 585px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .badge img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .badge span {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2.8px;
+      }
+
+      .about-content h1 {
+        font-size: 50px;
+        font-weight: 700;
+        line-height: 60px;
+        letter-spacing: -0.5px;
+        margin-bottom: 22px;
+      }
+
+      .about-content .description {
+        font-size: 18px;
+        line-height: 27.2px;
+        text-align: justify;
+        margin-bottom: 15px;
+      }
+
+      .about-content .highlight {
+        font-size: 18px;
+        line-height: 27.2px;
+        color: #df613e;
+        margin-bottom: 15px;
+      }
+
+      .services-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .service-item {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+      }
+
+      .service-item svg {
+        width: 24px;
+        height: 24px;
+        color: #df613e;
+        flex-shrink: 0;
+      }
+
+      .service-item span {
+        font-size: 18px;
+        line-height: 27.2px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 9px 24px;
+        background: #df613e;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: -0.14px;
+        border-radius: 29px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        text-decoration: none;
+        transition: background 0.3s;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: #c5543a;
+      }
+
+      /* Services Section */
+      .services-section {
+        padding: 96px 0;
+        position: relative;
+      }
+
+      .services-bg {
+        position: relative;
+        width: 100%;
+        min-height: 582px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .services-overlay {
+        position: absolute;
+        inset: 0;
+        background: #222222;
+        opacity: 0.7;
+      }
+
+      .services-content {
+        position: relative;
+        padding: 96px 64px 160px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .services-header {
+        max-width: 800px;
+        margin-bottom: 40px;
+      }
+
+      .services-header .label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .services-header .label img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .services-header .label span {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2.8px;
+        color: white;
+        text-transform: uppercase;
+      }
+
+      .services-header h2 {
+        font-size: 50px;
+        line-height: 60px;
+        letter-spacing: -0.5px;
+        color: white;
+        margin-bottom: 32px;
+      }
+
+      .services-header p {
+        font-size: 18px;
+        line-height: 27.2px;
+        color: white;
+        max-width: 532px;
+      }
+
+      .services-card {
+        background: white;
+        border-radius: 40px;
+        padding: 48px;
+        margin-top: -160px;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
+        overflow-x: auto;
+      }
+
+      .services-grid {
+        display: flex;
+        gap: 60px;
+        min-width: max-content;
+      }
+
+      .service-card {
+        width: 245px;
+        flex-shrink: 0;
+      }
+
+      .service-card img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 24px;
+      }
+
+      .service-card h3 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+        min-height: 48px;
+        margin-bottom: 10px;
+      }
+
+      .service-card p {
+        font-size: 16px;
+        line-height: 24px;
+        text-align: justify;
+      }
+
+      .service-separator {
+        width: 1px;
+        height: 263px;
+        background: #ebebeb;
+      }
+
+      /* Factory Section */
+      .factory-section {
+        padding: 40px 109px;
+        text-align: center;
+      }
+
+      .factory-section h2 {
+        font-family: "DM Sans", sans-serif;
+        font-size: 34px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .factory-section .highlight {
+        color: #df613e;
+      }
+
+      .factory-section img {
+        width: 100%;
+        margin: 32px 0;
+      }
+
+      .factory-section p {
+        font-family: "DM Sans", sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      /* Process Section */
+      .process-section {
+        padding: 110px 220px;
+      }
+
+      .process-header {
+        margin-bottom: 32px;
+      }
+
+      .process-header .label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+
+      .process-header .label img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .process-header .label span {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2.8px;
+      }
+
+      .process-title-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 24px;
+        margin-bottom: 60px;
+      }
+
+      .process-title-row h2 {
+        font-size: 50px;
+        font-weight: 700;
+        line-height: 30px;
+        letter-spacing: -0.5px;
+        max-width: 591px;
+      }
+
+      .process-title-row p {
+        font-size: 16px;
+        line-height: 27.2px;
+        color: #545454;
+        text-align: justify;
+        max-width: 657px;
+      }
+
+      .process-content {
+        display: flex;
+        gap: 48px;
+        align-items: center;
+      }
+
+      .process-image {
+        width: 463px;
+        height: 554px;
+        border-radius: 40px;
+        background-size: cover;
+        background-position: center;
+        flex-shrink: 0;
+      }
+
+      .process-steps {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .process-step {
+        display: flex;
+        align-items: center;
+        gap: 19px;
+        padding: 10px 30px;
+        border-radius: 10px;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .process-step:hover {
+        background: rgba(0, 0, 0, 0.02);
+      }
+
+      .process-step.active {
+        background: #df613e;
+      }
+
+      .process-step .number {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 60px;
+        letter-spacing: -0.5px;
+        color: #df613e;
+      }
+
+      .process-step.active .number {
+        color: white;
+      }
+
+      .process-step-content {
+        flex: 1;
+      }
+
+      .process-step h3 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: -0.2px;
+        margin-bottom: 11px;
+      }
+
+      .process-step p {
+        font-size: 16px;
+        line-height: 27.2px;
+        font-weight: 500;
+      }
+
+      .process-step.active h3,
+      .process-step.active p {
+        color: white;
+      }
+
+      /* Brand Trust Section */
+      .brand-section {
+        padding: 55px 220px;
+        background: linear-gradient(
+          0deg,
+          rgba(245, 245, 245, 1) 0%,
+          rgba(245, 245, 245, 1) 100%
+        );
+        border-top: 1px solid #ebebeb;
+      }
+
+      .brand-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 48px;
+        max-width: 1288px;
+        margin: 0 auto;
+      }
+
+      .brand-container h2 {
+        font-size: 48px;
+        line-height: 60px;
+        letter-spacing: -0.15px;
+      }
+
+      .brand-container .light {
+        font-weight: 300;
+      }
+
+      .brand-container .bold {
+        font-weight: 700;
+      }
+
+      .brand-container .highlight {
+        color: #df613e;
+      }
+
+      .brand-logos {
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .brand-logos-track {
+        display: flex;
+        gap: 60px;
+        width: max-content;
+      }
+
+      .brand-logos img {
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        padding: 110px 220px;
+      }
+
+      .faq-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 80px;
+      }
+
+      .faq-title {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .faq-title .label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .faq-title .label img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .faq-title .label span {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2.8px;
+      }
+
+      .faq-title h2 {
+        font-size: 50px;
+        line-height: 60px;
+        letter-spacing: -0.5px;
+      }
+
+      .faq-content {
+        display: flex;
+        gap: 30px;
+      }
+
+      .faq-image {
+        width: 625px;
+        min-height: 618px;
+        border-radius: 40px;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-end;
+        padding: 40px 35px;
+        position: relative;
+      }
+
+      .faq-image::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(34, 34, 34, 0) 64%,
+          rgba(34, 34, 34, 0.8) 100%
+        );
+        border-radius: 40px;
+      }
+
+      .faq-contact {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .faq-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+      }
+
+      .faq-contact-item svg {
+        width: 30px;
+        height: 30px;
+      }
+
+      .faq-contact-item p {
+        font-size: 20px;
+        line-height: 24px;
+      }
+
+      .faq-list {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 29px;
+      }
+
+      .faq-item {
+        border: 1px solid #ebebeb;
+        border-radius: 10px;
+        background: white;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 21px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .faq-question h3 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+      }
+
+      .faq-question svg {
+        width: 24px;
+        height: 24px;
+        transition: transform 0.3s;
+      }
+
+      .faq-item.active .faq-question {
+        background: #df613e;
+        border-radius: 10px 10px 0 0;
+        color: white;
+      }
+
+      .faq-item.active .faq-question svg {
+        transform: rotate(180deg);
+        color: white;
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        background: #df613e;
+        border-radius: 0 0 10px 10px;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+      }
+
+      .faq-answer p {
+        padding: 22px 20px;
+        font-size: 18px;
+        line-height: 27.2px;
+        text-align: justify;
+        color: white;
+      }
+
+      /* Contact Section */
+      .contact-section {
+        padding: 80px 16px 0;
+        background: #292929;
+      }
+
+      .contact-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        margin-bottom: 48px;
+      }
+
+      .contact-content p {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 26px;
+        color: white;
+        opacity: 0.5;
+        margin-bottom: 16px;
+      }
+
+      .contact-content h2 {
+        font-size: 48px;
+        line-height: 56px;
+      }
+
+      .contact-content .brand {
+        font-weight: 700;
+        color: #df613e;
+      }
+
+      .contact-content .subtitle {
+        font-weight: 500;
+        color: #df613e;
+      }
+
+      .contact-content .text {
+        font-weight: 500;
+        color: white;
+      }
+
+      .contact-map {
+        position: relative;
+        width: 100%;
+        height: 541px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .map-marker {
+        position: absolute;
+        top: 236px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 172px;
+        height: 172px;
+        background: rgba(223, 97, 62, 0.4);
+        border-radius: 50%;
+        border: 2px solid #df613e;
+      }
+
+      .contact-card {
+        position: absolute;
+        top: 131px;
+        left: 120px;
+        width: 393px;
+        background: #292929;
+        border-radius: 15px;
+        padding: 24px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .contact-card p {
+        font-size: 16px;
+        line-height: 27.2px;
+        letter-spacing: -0.16px;
+        color: white;
+        margin-bottom: 24px;
+      }
+
+      /* Footer */
+      footer {
+        background: #222222;
+        padding: 50px 16px;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 130px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        gap: 97px;
+      }
+
+      .footer-logo img {
+        width: auto;
+        height: auto;
+      }
+
+      .footer-links,
+      .footer-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .footer-links h3,
+      .footer-contact h3 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: -0.2px;
+        color: white;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .footer-links a {
+        font-size: 20px;
+        line-height: 27.2px;
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #df613e;
+      }
+
+      .footer-contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .footer-contact-info p {
+        font-size: 20px;
+        line-height: 27.2px;
+        letter-spacing: -0.16px;
+        color: white;
+      }
+
+      .footer-contact-info .address {
+        max-width: 335px;
+        text-align: justify;
+      }
+
+      .footer-copyright {
+        font-size: 16px;
+        line-height: 27.2px;
+        color: white;
+        text-align: center;
+      }
+
+      /* Responsive */
+      @media (max-width: 1400px) {
+        .about-section,
+        .process-section,
+        .faq-section,
+        .brand-section {
+          padding-left: 64px;
+          padding-right: 64px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .header-container {
+          flex-direction: column;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .about-container,
+        .process-content,
+        .faq-content,
+        .brand-container,
+        .footer-content {
+          flex-direction: column;
+        }
+
+        .about-section,
+        .process-section,
+        .faq-section,
+        .brand-section {
+          padding: 64px 32px;
+        }
+
+        .factory-section {
+          padding: 40px 32px;
+        }
+
+        .carousel-content h2 {
+          font-size: 48px;
+          line-height: 56px;
+        }
+
+        .about-images {
+          width: 100%;
+          height: 500px;
+        }
+
+        .process-image {
+          width: 100%;
+          height: 400px;
+        }
+
+        .faq-image {
+          width: 100%;
+        }
+
+        .contact-card {
+          position: static;
+          width: 100%;
+          max-width: 393px;
+          margin: -80px auto 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav a {
+          font-size: 16px;
+          padding: 10px 15px;
+        }
+
+        .contact-info {
+          flex-direction: column;
+        }
+
+        .carousel {
+          height: 600px;
+        }
+
+        .carousel-content h2 {
+          font-size: 36px;
+          line-height: 44px;
+        }
+
+        .about-content h1,
+        .services-header h2,
+        .process-title-row h2,
+        .faq-title h2 {
+          font-size: 36px;
+          line-height: 44px;
+        }
+
+        .services-card {
+          padding: 24px;
+        }
+
+        .process-title-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
       :root {
         --koyee-orange: #e46a42; /* Approximate orange from your logo */
       }
@@ -307,8 +1396,8 @@
             class="contact-info d-flex flex-column flex-lg-row align-items-lg-center"
           >
             <div class="me-lg-4 mb-2 mb-lg-0">
-              <a href="tel:+966501316169">
-                <i class="fa-solid fa-phone-volume"></i> +966 50 131 6169
+              <a href="tel:+966501316196">
+                <i class="fa-solid fa-phone-volume"></i> +966 50 131 6196
               </a>
             </div>
             <div>
@@ -362,130 +1451,811 @@
         </div>
       </div>
     </section>
-    <section>
-      <div class="container-fluid">
-        <div class="row g-0 align-items-center">
-          <div class="col-lg-6">
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="about-container">
+        <div class="about-images">
+          <img
+            src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/image-3.png"
+            alt="Container building exterior"
+          />
+          <img
+            src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/image-4.png"
+            alt="Container building detail"
+          />
+        </div>
+
+        <div class="about-content">
+          <div class="badge">
             <img
-              src="assets/img/Screenshot 2026-02-11 at 4.19.42 PM.png"
-              style="height: auto; width: 80%; margin-left: 100px"
-              alt="Koyee Container Presentation"
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/image-9.svg"
+              alt="Icon"
             />
+            <span class="text-dark">WE ARE</span>
           </div>
-          <div class="col-lg-6 pe-5 pt-5 pb-5">
-            <div class="container">
-              <div class="d-flex align-items-center mb-2">
-                <img
-                  src="assets/img/icon-sub-heading.svg fill.png"
-                  alt="icon"
-                  style="width: 20px; height: auto; margin-right: 10px"
-                />
-                <span
-                  style="
-                    text-transform: uppercase;
-                    letter-spacing: 2px;
-                    color: #d35400;
-                    font-weight: 600;
-                  "
-                  >We Are</span
-                >
-              </div>
 
-              <h2
-                style="
-                  font-weight: 700;
-                  font-size: 2.5rem;
-                  margin-bottom: 1.5rem;
-                "
+          <h1>Modular Container Home Manufacturer & Installer</h1>
+
+          <div class="description">
+            <strong
+              >Koyee Container Workshop has built a strong reputation through
+              its successful delivery of high-quality camp accommodation and
+              temporary facility solutions including various QATAR ENERGY and
+              ARAMCO projects</strong
+            >. Moving beyond conventional portacabin and flat-pack systems,
+            Koyee has developed its own proprietary modular container building
+            system.<br /><br />
+            Supported by our parent factory in China and local facilities in
+            Qatar and the Kingdom of Saudi Arabia, KOYEE is well positioned to
+            meet the most demanding project requirements.<br /><br />
+            We have a proven record of
+            <strong
+              >delivering and installing 10,000-bed camps in just 125 days in
+              ARAMCO and QATAR ENERGY Projects.</strong
+            >
+          </div>
+
+          <p class="highlight">
+            <strong
+              >With a reputation built on quality, speed, and reliability, </strong
+            ><strong style="font-weight: 800">KOYEE</strong
+            ><strong>
+              is your trusted partner for modular infrastructure across the
+              Middle East Region.</strong
+            >
+          </p>
+
+          <div class="services-list">
+            <div class="service-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                Modular Container Home Manufacturer & Installer
-              </h2>
-
-              <p>
-                <strong>Koyee Container Workshop</strong> has built a strong
-                reputation through its successful delivery of high-quality camp
-                accommodation and temporary facility solutions including various
-                <strong>QATAR ENERGY and ARAMCO projects</strong>. Moving beyond
-                conventional portacabin and flat-pack systems, Koyee has
-                developed its own proprietary modular container building system.
-              </p>
-
-              <p>
-                Supported by our parent factory in China and local facilities in
-                Qatar and the Kingdom of Saudi Arabia, KOYEE is well positioned
-                to meet the most demanding project requirements.
-              </p>
-
-              <p>
-                We have a proven record of
-                <strong
-                  >delivering and installing 10,000-bed camps in just 125 days
-                  in ARAMCO and QATAR ENERGY Projects.</strong
-                >
-              </p>
-
-              <p style="color: #d35400; font-weight: 600">
-                With a reputation built on quality, speed, and reliability,
-                KOYEE is your trusted partner for modular infrastructure across
-                the Middle East Region.
-              </p>
-
-              <div class="row mt-4">
-                <div class="col-md-6">
-                  <ul class="list-unstyled">
-                    <li class="pb-2 pt-2">
-                      <img src="assets/img/SVG.png" alt="icon" />
-                      Accommodation Camps
-                    </li>
-                    <li class="pb-2 pt-2">
-                      <img src="assets/img/SVG.png" alt="icon" />
-                      Office Buildings
-                    </li>
-                    <li class="pb-2 pt-2">
-                      <img src="assets/img/SVG.png" alt="icon" />
-                      Emergency Disaster Camps
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-md-6">
-                  <ul class="list-unstyled">
-                    <li class="pb-2 pt-2">
-                      <img src="assets/img/SVG.png" alt="icon" />
-                      Warehouses
-                    </li>
-                    <li class="pb-2 pt-2">
-                      <img src="assets/img/SVG.png" alt="icon" />
-                      Amenities Buildings
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-12">
-                  <ul class="list-unstyled">
-                    <li class="pb-2 pt-2">
-                      <img src="assets/img/SVG.png" alt="icon" />
-                      Solar Powered Mobile Offices and Toilet Blocks
-                    </li>
-                    <li class="pb-2 pt-2">
-                      <img src="assets/img/SVG.png" alt="icon" />
-                      Foldable Container Accommodation and Offices (plug n play)
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <a
-                href="#"
-                class="btn mt-3"
-                style="
-                  background-color: #e67e22;
-                  color: white;
-                  border-radius: 25px;
-                  padding: 10px 30px;
-                "
-                >Learn More</a
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Accommodation Camps</span>
+            </div>
+            <div class="service-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Warehouses</span>
+            </div>
+            <div class="service-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Office Buildings</span>
+            </div>
+            <div class="service-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Amenities Buildings</span>
+            </div>
+            <div class="service-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Emergency Disaster Camps</span>
+            </div>
+            <div class="service-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Solar Powered Mobile Offices and Toilet Blocks</span>
+            </div>
+            <div class="service-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span
+                >Foldable Container Accommodation and Offices (plug n
+                play)</span
               >
             </div>
           </div>
+
+          <a href="#contact" class="btn">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+      <div
+        class="services-bg"
+        style="
+          background-image: url(https://c.animaapp.com/mlf0ys5jbwuYBo/img/background-1.png);
+        "
+      >
+        <div class="services-overlay"></div>
+        <div class="services-content">
+          <div class="services-header">
+            <div class="label">
+              <img
+                src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/image-6.svg"
+                alt="Icon"
+              />
+              <span>WHAT WE DO</span>
+            </div>
+
+            <h2>
+              <span style="font-weight: 700">Porta Cabins</span>
+              <span style="font-weight: 300"> for all your<br /></span>
+              <span>space needs</span>
+            </h2>
+
+            <p>
+              Suitable for construction sites, post disaster reconstruction,
+              commercial marketing.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="
+          max-width: 1200px;
+          margin: -160px auto 0;
+          padding: 0 64px;
+          position: relative;
+          z-index: 10;
+        "
+      >
+        <div class="services-card">
+          <div class="services-grid">
+            <div class="service-card">
+              <img
+                src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/analysis-left.svg"
+                alt="Strategic Project Analysis"
+              />
+              <h3>Strategic Project Analysis</h3>
+              <p>
+                We provide in-depth project analysis to ensure every Porta
+                Cabin, Modular Container House, and Temporary Shelter project is
+                optimized for success.
+              </p>
+            </div>
+
+            <div class="service-separator"></div>
+
+            <div class="service-card">
+              <img
+                src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/designs.svg"
+                alt="Innovative Design Solutions"
+              />
+              <h3>Innovative Design Solutions</h3>
+              <p>
+                Our expert team creates cutting-edge designs for Porta Cabins,
+                Modular Container Houses, and Temporary Shelters, tailored to
+                meet your unique requirements and preferences.
+              </p>
+            </div>
+
+            <div class="service-separator"></div>
+
+            <div class="service-card">
+              <img
+                src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/layer-1.svg"
+                alt="Efficient Construction Services"
+              />
+              <h3>Efficient Construction Services</h3>
+              <p>
+                We deliver high-quality construction services for prefabricated
+                houses, ensuring your project is completed on time and within
+                budget.
+              </p>
+            </div>
+
+            <div class="service-separator"></div>
+
+            <div class="service-card">
+              <img
+                src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/frame-1.svg"
+                alt="Complete Turnkey Solutions"
+              />
+              <h3>Complete Turnkey Solutions</h3>
+              <p>
+                From concept to completion, we manage every detail of your
+                project, offering a seamless, hassle-free experience, arriving
+                safely and on time.
+              </p>
+            </div>
+
+            <div class="service-separator"></div>
+
+            <div class="service-card">
+              <img
+                src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/frame-2.svg"
+                alt="Tailored Customization"
+              />
+              <h3>Tailored Customization</h3>
+              <p>
+                We offer extensive customization options to meet your specific
+                needs, from layout design to material selection for Porta Cabins
+                and Modular Container Houses.
+              </p>
+            </div>
+
+            <div class="service-separator"></div>
+
+            <div class="service-card">
+              <img
+                src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/capa-1.svg"
+                alt="Sustainability Consulting"
+              />
+              <h3>Sustainability Consulting</h3>
+              <p>
+                We offer sustainability consulting to help you implement
+                eco-friendly practices in the design and construction of your
+                Porta Cabins and Modular Structures
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Factory Section -->
+    <section class="factory-section">
+      <h2>
+        Koyee International Container Factory in
+        <span class="highlight">MODON 3</span> Industrial area
+      </h2>
+
+      <img
+        src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/group-48.png"
+        alt="Koyee International Container Factory"
+      />
+
+      <p>
+        As the building contractor, <strong>Koyee Container</strong> fabricated
+        and delivered the modular units under tight timelines and
+        specifications, enabling the camp to be completed and ready for
+        occupancy in just <strong><em>four months.</em></strong
+        ><br /><br />
+        Koyee International Container Industrial Company has established a local
+        manufacturing facility in the Kingdom of
+        <strong>Saudi Arabia</strong> in response to strong market demand. Since
+        2024, Koyee has successfully delivered four major modular camp projects
+        across KSA. The new factory enables faster delivery, reduced logistics
+        costs, lower project risk, and supports the Kingdom's IKTVA localization
+        objectives, reinforcing Koyee's long-term commitment to reliable and
+        sustainable manufacturing in Saudi Arabia.
+      </p>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+      <div class="process-header">
+        <div class="label">
+          <img
+            src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/image-10.svg"
+            alt="Icon"
+          />
+          <span>OUR PROCESS</span>
+        </div>
+      </div>
+
+      <div class="process-title-row">
+        <span
+          style="
+            display: block;
+            font-size: 2em; /* Approximately 24px in most browsers */
+            margin-top: 0.83em;
+            margin-bottom: 0.83em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+          "
+          >Customization Process</span
+        >
+        <p>
+          Our main products include Detachable Container House, Flat Pack
+          Container House, Prefab K House, Folding Container House, Expandable
+          Container House, etc.
+        </p>
+      </div>
+
+      <div class="process-content">
+        <div
+          class="process-image"
+          style="
+            background-image: url(https://c.animaapp.com/mlf0ys5jbwuYBo/img/our-process-image-jpg.png);
+          "
+        ></div>
+
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="number">01</div>
+            <div class="process-step-content">
+              <h3>Solution</h3>
+              <p>Koyee Container Solution provides efficient storage.</p>
+            </div>
+          </div>
+
+          <div class="process-step active">
+            <div class="number">02</div>
+            <div class="process-step-content">
+              <h3>Design</h3>
+              <p>Koyee Container Design offers innovative styles.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="number">03</div>
+            <div class="process-step-content">
+              <h3>Sign a Contract</h3>
+              <p>Koyee Container officially signs the contract today.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="number">04</div>
+            <div class="process-step-content">
+              <h3>Manufacturing</h3>
+              <p>Koyee Container Manufacturing excels in quality.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="number">05</div>
+            <div class="process-step-content">
+              <h3>Logistics</h3>
+              <p>Koyee Container Logistics optimizes supply chains.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="number">06</div>
+            <div class="process-step-content">
+              <h3>After Sales</h3>
+              <p>Koyee Container After Sales ensures customer satisfaction.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div style="margin-top: 60px">
+        <img
+          src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/border.svg"
+          alt="Decorative border"
+          style="width: 100%"
+        />
+      </div> -->
+    </section>
+
+    <!-- Brand Trust Section -->
+    <section class="brand-section">
+      <div class="brand-container">
+        <h2>
+          <span class="light">We are </span>
+          <span class="bold highlight">trusted</span>
+          <span class="light"> by major</span><br />
+          <span class="bold">Global Brands</span>
+        </h2>
+
+        <div class="brand-logos">
+          <div class="brand-logos-track animate-marquee">
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/qatar-energy-lng-1.png"
+              alt="Qatar energy LNG"
+              style="width: 47px; height: 56px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/como-1.png"
+              alt="Como"
+              style="width: 81px; height: 40px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/l-t-energy-1.png"
+              alt="L t energy"
+              style="width: 89px; height: 42px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/samsung-e-a-1.png"
+              alt="Samsung e a"
+              style="width: 126px; height: 28px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/hyundai-livart-1.png"
+              alt="Hyundai livart"
+              style="width: 106px; height: 42px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/samsung-c-t-1.png"
+              alt="Samsung c t"
+              style="width: 69px; height: 36px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/nongshim-1.png"
+              alt="Nongshim"
+              style="width: 49px; height: 48px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/gulf-asia-1.png"
+              alt="Gulf asia"
+              style="width: 142px; height: 38px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/nozul-1.png"
+              alt="Nozul"
+              style="width: 45px; height: 46px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/image-18.png"
+              alt="Brand logo"
+              style="width: 68px; height: 38px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/image-19.png"
+              alt="Brand logo"
+              style="width: 72px; height: 38px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/aramco-1.png"
+              alt="Aramco"
+              style="width: 82px; height: 38px"
+            />
+            <!-- Duplicate for seamless loop -->
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/qatar-energy-lng-1.png"
+              alt="Qatar energy LNG"
+              style="width: 47px; height: 56px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/como-1.png"
+              alt="Como"
+              style="width: 81px; height: 40px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/l-t-energy-1.png"
+              alt="L t energy"
+              style="width: 89px; height: 42px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/samsung-e-a-1.png"
+              alt="Samsung e a"
+              style="width: 126px; height: 28px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/hyundai-livart-1.png"
+              alt="Hyundai livart"
+              style="width: 106px; height: 42px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/samsung-c-t-1.png"
+              alt="Samsung c t"
+              style="width: 69px; height: 36px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/nongshim-1.png"
+              alt="Nongshim"
+              style="width: 49px; height: 48px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/gulf-asia-1.png"
+              alt="Gulf asia"
+              style="width: 142px; height: 38px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/nozul-1.png"
+              alt="Nozul"
+              style="width: 45px; height: 46px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/image-18.png"
+              alt="Brand logo"
+              style="width: 68px; height: 38px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/image-19.png"
+              alt="Brand logo"
+              style="width: 72px; height: 38px"
+            />
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/aramco-1.png"
+              alt="Aramco"
+              style="width: 82px; height: 38px"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="faq-header">
+        <div class="faq-title">
+          <div class="label">
+            <img
+              src="https://c.animaapp.com/mlf0ys5jbwuYBo/img/image-8.svg"
+              alt="FAQ Icon"
+            />
+            <span>FAQS</span>
+          </div>
+          <h2>
+            <span style="font-weight: 300">Frequently asked<br /></span>
+            <span style="font-weight: 700">questions</span>
+          </h2>
+        </div>
+
+        <a href="#" class="btn">View All</a>
+      </div>
+
+      <div class="faq-content">
+        <div
+          class="faq-image"
+          style="
+            background-image: url(https://c.animaapp.com/mlf0ys5jbwuYBo/img/our-faqs-image-jpg.png);
+          "
+        >
+          <div class="faq-contact">
+            <div class="faq-contact-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                />
+              </svg>
+              <p><strong>+</strong>966 50 131 6196</p>
+            </div>
+            <div class="faq-contact-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+              <p><strong>info@koyeecontainerqa.com</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Do you produce Camps?</h3>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+            <div class="faq-answer">
+              <p></p>
+            </div>
+          </div>
+
+          <div class="faq-item active">
+            <div class="faq-question">
+              <h3>Can modular buildings be customized?</h3>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Yes. We offer full customization in layout, size, finishes,
+                insulation, HVAC, electrical systems, and exterior design to
+                meet specific project requirements.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Are the buildings fire-rated?</h3>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+            <div class="faq-answer">
+              <p></p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>What is your capacity of factories?</h3>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+            <div class="faq-answer">
+              <p></p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Do you handle shipping and logistics?</h3>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+            <div class="faq-answer">
+              <p></p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>How is installation managed outside KSA, Qatar and China?</h3>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </div>
+            <div class="faq-answer">
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="contact-content">
+        <p>Coverage Area</p>
+        <h2>
+          <span class="brand">KOYEE</span>
+          <span class="subtitle"> Near You</span>
+          <span class="text"> Quality, Convenience, and Expertise</span>
+        </h2>
+      </div>
+
+      <div
+        class="contact-map"
+        style="
+          background-image: url(https://c.animaapp.com/mlf0ys5jbwuYBo/img/placeholder-image.png);
+        "
+      >
+        <div class="map-marker"></div>
+        <div class="contact-card">
+          <p>Working Hours : 08:00 - 17:00, Saturday-Friday</p>
+          <a href="#contact" class="btn">Contact Us</a>
         </div>
       </div>
     </section>
